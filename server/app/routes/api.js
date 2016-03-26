@@ -30,9 +30,10 @@ router.post('/team', function( req, res, next){
   }, next);
 });
 
-router.post('/team/:id', function( req, res, next ){
+router.put('/team/:id', function( req, res, next ){
   SalesTeam.findOne({_id: req.params.id})
   .then(function(member){
+    console.log('ROUTE:',req.body.regions)
     member.regions = req.body.regions;
     return member.save();
   })

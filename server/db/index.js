@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var salesTeamSchema = new Schema({
 
   name: String,
-  regions: [String]
+  regions: Schema.Types.Mixed
 
 });
 

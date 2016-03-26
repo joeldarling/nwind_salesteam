@@ -12,7 +12,7 @@ var seed = function(){
   })
   .then(function(){
     //seed db
-    return SalesTeam.create({name: 'Joel Darling', regions:['North']});
+    return SalesTeam.create({name: 'Joel Darling', regions:{North: true}});
   })
   .then(function(result){
     db.disconnect();

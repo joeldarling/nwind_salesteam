@@ -20,7 +20,9 @@
           <div class="panel-heading">Add New Team Member</div>
           <div class="form-group panel-body" role="form">
               <input class="form-control" type="text" ng-model="inputModel.name" placeholder="Name">
-              <br/><button type="submit" class="btn btn-primary" ng-click="add()" ng-disabled="inputModel.name==null" >Save</button>
+              <br/><span ng-repeat="(region, active) in regions"><button class="btn" ng-class="{'btn-primary': active,'btn-secondary': !active}" ng-click="toggleRegion(region)">{{ region }} </button></span>
+
+              <br/><button type="submit" class="btn btn-primary" ng-click="add()" ng-disabled="!inputModel.name" >Save</button>
           </div>
         </div>
       </div>
@@ -28,9 +30,13 @@
         <div class="row">
           <div class="col-md-6" ng-repeat="salesman in salesTeam">
             <div class="panel panel-default">
-              <div class="panel-heading">{{ salesman.name }}</div>
+              <div class="panel-heading">{{ salesman.name }}
+                <span ng-hide="getActive(salesman.regions)>0"><button class="btn btn-danger btn-xs pull-right" ng-click="deleteMember(salesman._id)"><span class="glyphicon glyphicon-remove"></span></button></span>
+              </div>
                 <div class="panel-body">
-                  {{ salesman.regions }}
+                  {{getActive(salesman.regions)}}
+                  <br/><span ng-repeat="(region, active) in salesman.regions"><button class="btn" ng-class="{'btn-primary': active,'btn-secondary': !active}" ng-click="toggleRegionMember(salesman._id, region)">{{ region }} </button></span>
+
                 </div
             </div>
           </div>
