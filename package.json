@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "seed": "node seed/seed_salesteam.js",
     "test": "CONN=mongodb://localhost/nwind_salesteam_test_db nodemon ./node_modules/mocha/bin/mocha",
     "start": "nodemon ./server/server.js"
   },
@@ -11,13 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.3",
+    "bootstrap": "^3.3.6",
     "chalk": "^1.1.1",
     "express": "^4.13.4",
-    "mongoose": "^4.4.10"
+    "mongoose": "^4.4.10",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
+    "morgan": "^1.7.0",
     "nodemon": "^1.9.1",
     "supertest": "^1.2.0",
     "supertest-as-promised": "^3.0.0"

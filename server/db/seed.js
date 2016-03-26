@@ -1,17 +1,20 @@
 var db = require('./index.js');
-var SalesMember = db.models.SalesMember;
+var SalesTeam = db.models.SalesTeam;
 
 var seed = function(){
-
   return db.connect()
   .then(function(){
     //empty dB
-    return SalesMember.remove({});
+
+    return SalesTeam.remove({});
   })
   .then(function(){
     //seed db
-    return SalesMember.create({name: 'Joel Darling', regions:['North']});
-  });
+    return SalesTeam.create({name: 'Joel Darling', regions:['North']});
+  })
+  .then(function(result){
+    db.disconnect();
+  }, console.log);
 
 };
 

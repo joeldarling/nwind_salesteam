@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var salesMemberSchema = new Schema({
+var salesTeamSchema = new Schema({
 
   name: String,
   regions: [String]
@@ -10,7 +10,7 @@ var salesMemberSchema = new Schema({
 });
 
 
-var SalesMember = mongoose.model('SalesMember', salesMemberSchema);
+var SalesTeam = mongoose.model('SalesTeam', salesTeamSchema);
 
 
 /// SETUP MONGOOSE CONNECTION ///
@@ -34,11 +34,22 @@ var connect = function(){
   return _conn;
 };
 
+var disconnect = function(){
+  if(!_conn)
+    return;
+
+  mongoose.connection.close(function(){
+    console.log('conn closed');
+  }, console.log);
+
+};
+
 
 /// EXPORT MODULE ///
 module.exports = {
   connect: connect,
+  disconnect: disconnect,
   models:{
-    SalesMember: SalesMember
+    SalesTeam: SalesTeam
   }
 };

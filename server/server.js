@@ -9,10 +9,10 @@ db.connect()
   .then(function(conn){
     console.log(chalk.green(conn.name));
 
-    var port = process.env.PORT || 3000;
-    
-    server.listen(port, function(){
-      console.log('listening on port', port);
+    var PORT = process.env.PORT || 3000;
+
+    server.listen(PORT, function(){
+      console.log(chalk.blue('Server started on port', chalk.magenta(PORT)));
     });
 
   }, function(err){
