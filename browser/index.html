@@ -14,8 +14,30 @@
   <body ng-app="nwind_salesteam">
     <div class="container" ng-controller="SalesTeamController">
       <h2>Northwind Sales Team</h2>
-      {{ salesTeam }}
-    </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Add New Team Member</div>
+          <div class="form-group panel-body" role="form">
+              <input class="form-control" type="text" ng-model="inputModel.name" placeholder="Name">
+              <br/><button type="submit" class="btn btn-primary" ng-click="add()" ng-disabled="inputModel.name==null" >Save</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6" ng-repeat="salesman in salesTeam">
+            <div class="panel panel-default">
+              <div class="panel-heading">{{ salesman.name }}</div>
+                <div class="panel-body">
+                  {{ salesman.regions }}
+                </div
+            </div>
+          </div>
+
+        </div>
+
+      </div>
 
   </body>
 

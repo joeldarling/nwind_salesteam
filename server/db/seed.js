@@ -1,5 +1,7 @@
 var db = require('./index.js');
+
 var SalesTeam = db.models.SalesTeam;
+
 
 var seed = function(){
   return db.connect()

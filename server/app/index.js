@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -13,6 +14,11 @@ app.use(morgan('dev'));
 app.use('/bootstrap', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist')));
 app.use('/angular', express.static(path.join(__dirname, '../../node_modules/angular')));
 app.use(express.static(path.join(__dirname, '../../browser')));
+
+//setup body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 //attach router files
 app.use('/', require('./routes'));
