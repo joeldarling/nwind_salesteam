@@ -26,5 +26,5 @@ npm start
 
 To view the app, point your browser to [http://localhost:3000/](http://localhost:3000/)
 
-[[https://github.com/joeldarling/nwind_salesteam/blob/master/angulardemo.gif|alt=demo]]
+![alt tag](https://github.com/joeldarling/nwind_salesteam/blob/master/angulardemo.gif|alt=demogif)
 
