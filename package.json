@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "seed": "node seed/seed_app.js",
-    "test": "CONN=mongodb://localhost/nwind_salesteam_test_db nodemon ./node_modules/mocha/bin/mocha",
-    "start": "nodemon ./server/server.js"
+    "test": "CONN=mongodb://localhost/nwind_salesteam_test_db node ./node_modules/mocha/bin/mocha",
+    "start": "node ./server/server.js"
   },
   "author": "",
   "license": "ISC",
