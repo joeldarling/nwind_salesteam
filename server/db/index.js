@@ -2,10 +2,11 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
+
 var salesTeamSchema = new Schema({
 
   name: String,
-  regions: Schema.Types.Mixed
+  regions: {type: Schema.Types.Mixed, default: {North: true, South: false, East: true, West: false}}
 
 });
 
@@ -38,9 +39,7 @@ var disconnect = function(){
   if(!_conn)
     return;
 
-  mongoose.connection.close(function(){
-    console.log('conn closed');
-  }, console.log);
+  mongoose.connection.close();
 
 };
 

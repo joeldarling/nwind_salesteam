@@ -33,7 +33,7 @@
           <div class="col-md-6" ng-repeat="salesman in salesTeam">
             <div class="panel panel-default" ng-class="{'panel-danger': getActive(salesman.regions)==0, 'panel-success': getActive(salesman.regions)>=3}">
               <div class="panel-heading">{{ salesman.name }}
-                <span ng-hide="getActive(salesman.regions)>0"><button class="btn btn-danger btn-xs pull-right" ng-click="deleteMember(salesman._id)">Delete</button></span>
+                <span ng-hide="getActive(salesman.regions)>0"><button class="btn btn-danger btn-xs pull-right" ng-click="deleteMember(salesman._id)">Delete</button></span><p/>
               </div>
                 <div class="panel-body">
                   <br/><span ng-repeat="(region, active) in salesman.regions" ><button class="btn" ng-class="{'btn-primary': active,'btn-secondary': !active}" ng-disabled="getActive(salesman.regions)>2 && !active" ng-click="toggleRegionMember(salesman._id, region)"> {{ region }} </button></span>

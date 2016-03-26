@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 var seed = require('../server/db/seed');
-var SalesMember = require('../server/db').models.SalesMember;
+var db = require('../server/db');
+var SalesTeam = db.models.SalesTeam;
 
 describe('Model', function(){
 
@@ -12,16 +13,14 @@ describe('Model', function(){
 
   });
 
-  it('can connect to dB', function(){
-    expect(SalesMember).to.be.ok;
-
-  });
-
   describe('SalesMember', function(){
     var salesTeam;
 
     beforeEach(function(done){
-      SalesMember.find({})
+      db.connect()
+      .then(function(){
+        return SalesTeam.find({});
+      }, done)
       .then(function(result){
         salesTeam = result;
         done();
@@ -35,12 +34,12 @@ describe('Model', function(){
     });
 
     it('Joel has regions', function(){
-      expect(salesTeam[0].regions.length).to.equal(1);
+      expect(salesTeam[0].regions).to.ok;
 
     });
 
     describe('create new sales member', function(){
-      var newMember = new SalesMember({name: 'Steve', regions:['South']});
+      var newMember = new SalesTeam({name: 'Steve'});
 
       it('can add a new member', function(){
         newMember.save()
