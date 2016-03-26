@@ -26,14 +26,13 @@ router.post('/team', function( req, res, next){
 
   newMember.save()
   .then(function(result){
-    res.send(result);
+    res.status(201).send(result);
   }, next);
 });
 
 router.put('/team/:id', function( req, res, next ){
   SalesTeam.findOne({_id: req.params.id})
   .then(function(member){
-    console.log('ROUTE:',req.body.regions)
     member.regions = req.body.regions;
     return member.save();
   })
