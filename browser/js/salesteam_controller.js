@@ -1,3 +1,4 @@
+
 app.controller('SalesTeamController', function($scope, $log, SalesTeamFactory){
 
   $scope.inputModel = null;
@@ -27,7 +28,7 @@ app.controller('SalesTeamController', function($scope, $log, SalesTeamFactory){
     .then(function(result){
       $scope.getTeam();
     }, $log.error);
-  }
+  };
 
   $scope.toggleRegion = function(region){
     $scope.regions[region] = !$scope.regions[region];
@@ -56,14 +57,12 @@ app.controller('SalesTeamController', function($scope, $log, SalesTeamFactory){
     return active;
   };
 
-
-
   $scope.getTeam();
-
 });
 
-var getMember = function(id, arr){
 
+/// Helper function to get the right sales member from the team array ///
+var getMember = function(id, arr){
   return arr.filter(function(member, i){
     return member._id === id;
   })[0];

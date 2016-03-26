@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, '../../browser')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 //attach router files
 app.use('/', require('./routes'));
 app.use('/api', require('./routes/api.js'));
