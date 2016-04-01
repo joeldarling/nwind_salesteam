@@ -1,3 +1,4 @@
+//why name this file server.. server/server
 var http = require('http');
 var db = require('./db');
 var chalk = require('chalk');

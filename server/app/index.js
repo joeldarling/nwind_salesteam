@@ -17,8 +17,12 @@ app.use(express.static(path.join(__dirname, '../../browser')));
 
 //setup body parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));//really why?
 
 //attach router files
-app.use('/', require('./routes'));
-app.use('/api', require('./routes/api.js'));
+app.get('/', function( req, res, next ){
+
+  res.sendFile(path.join(__dirname, '../../../browser/index.html'));
+
+});
+app.use('/api/teams', require('./routes/teams'));

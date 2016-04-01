@@ -6,7 +6,7 @@ var SalesTeam = require('../../db').models.SalesTeam;
 
 module.exports = router;
 
-router.get('/team', function( req, res, next ){
+router.get('/', function( req, res, next ){
 
   SalesTeam.find({})
   .then(function(result){
@@ -14,14 +14,14 @@ router.get('/team', function( req, res, next ){
   }, next);
 });
 
-router.get('/team/:id', function ( req, res, next ){
+router.get('/:id', function ( req, res, next ){
   SalesTeam.findOne({_id: req.params.id})
   .then(function(result){
     res.send(result);
   }, next);
 });
 
-router.post('/team', function( req, res, next){
+router.post('/', function( req, res, next){
   var newMember = new SalesTeam({name:req.body.name, regions: req.body.regions});
 
   newMember.save()
@@ -30,7 +30,7 @@ router.post('/team', function( req, res, next){
   }, next);
 });
 
-router.put('/team/:id', function( req, res, next ){
+router.put('/:id', function( req, res, next ){
   SalesTeam.findOne({_id: req.params.id})
   .then(function(member){
     member.regions = req.body.regions;
@@ -41,7 +41,7 @@ router.put('/team/:id', function( req, res, next ){
   }, next);
 });
 
-router.delete('/team/:id', function( req, res, next ){
+router.delete('/:id', function( req, res, next ){
   SalesTeam.findOneAndRemove({_id: req.params.id})
   .then(function(result){
     res.send(result);

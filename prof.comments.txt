@@ -1,0 +1,3 @@
+- good work!
+- if you used [String] for your regions.. things could have been easier
+- setting up your default route was over overcomplicated

@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
+//you could do this with an array of strings...
+//or you could have done a nested schema.. i think..
 var salesTeamSchema = new Schema({
 
   name: String,

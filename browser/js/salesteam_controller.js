@@ -3,8 +3,14 @@ app.controller('SalesTeamController', function($scope, $log, SalesTeamFactory){
 
   $scope.inputModel = null;
   $scope.regions = {North: false, South: false, East: false, West: false};
+  /// Helper function to get the right sales member from the team array ///
+  var getMember = function(id, arr){
+    return arr.filter(function(member, i){
+      return member._id === id;
+    })[0];
+  };
 
-  $scope.getTeam = function(){
+  var getTeam = function(){
     SalesTeamFactory.getTeam()
     .then(function(team){
       $scope.salesTeam = team.data;
@@ -18,7 +24,7 @@ app.controller('SalesTeamController', function($scope, $log, SalesTeamFactory){
     .then(function(result){
       $scope.inputModel = null;
       $scope.regions = {North: false, South: false, East: false, West: false};
-      $scope.getTeam();
+      getTeam();
     }, $log.error);
 
   };
@@ -26,24 +32,24 @@ app.controller('SalesTeamController', function($scope, $log, SalesTeamFactory){
   $scope.deleteMember = function(memberId){
     SalesTeamFactory.deleteMember(memberId)
     .then(function(result){
-      $scope.getTeam();
+      getTeam();
     }, $log.error);
   };
 
   $scope.toggleRegion = function(region){
-    $scope.regions[region] = !$scope.regions[region];
+    $scope.regions[region] = !$scope.regions[region];//maybe pass in regions, region- then you can reuse
   };
 
   $scope.toggleRegionMember = function(memberId, region){
     var member = getMember(memberId, $scope.salesTeam);
 
-    member.regions[region] = !member.regions[region];
+    member.regions[region] = !member.regions[region];//could you refactor here?
 
     SalesTeamFactory.updateMember(member)
     .then(function(result){
-      $scope.getTeam();
+      getTeam();
 
-    },$log.error);
+    }, $log.error);
 
   };
 
@@ -57,13 +63,7 @@ app.controller('SalesTeamController', function($scope, $log, SalesTeamFactory){
     return active;
   };
 
-  $scope.getTeam();
+  getTeam();
 });
 
 
-/// Helper function to get the right sales member from the team array ///
-var getMember = function(id, arr){
-  return arr.filter(function(member, i){
-    return member._id === id;
-  })[0];
-};
